@@ -1,0 +1,71 @@
+@import './base.css';
+
+#app {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn {
+  height: 2.5em;
+  width: 5em;
+
+  cursor: pointer;
+  border: 1px solid #b40d0e;
+  font-size: 2em;
+  border-radius: 5px;
+  background-color: #b40d0e;
+  color: white;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: #9b0c0c;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+  background-color: #9b0c0c;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(2px);
+}
+
+.main-btn {
+  height: 2.5em;
+  width: 5em;
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  z-index: 1;
+}
+
+.btn-disabled {
+  background-color: #3b2121;
+  border-color: #241c1c;
+  color: white;
+}
+
+.btn-disabled:hover {
+  background-color: #221313;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    padding: 0 2rem;
+    width: 100vw
+  }
+}
