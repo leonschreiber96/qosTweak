@@ -1,16 +1,23 @@
-import WebRtcCommand from "../../shared-model/webRtcCommand";
-import SocketService from "./socketService";
+import WebRtcCommand from '@shared/webRtcCommand';
+import SocketService from './socketService';
 import useWebRtcStore from './store/stores/webRtcStore';
 
 export default class WebRtcManager {
    private peerConnection: RTCPeerConnection | null = null;
    private rtcSessionDescription: RTCSessionDescription | null = null;
-   private webRtcBrokerSocket: SocketService = new SocketService("webrtc").connect('http://localhost:3001');
+   private webRtcBrokerSocket: SocketService = new SocketService('webrtc').connect(
+      'http://localhost:3001'
+   );
    private webRtcStore = useWebRtcStore();
 
    constructor() {
-      this.webRtcBrokerSocket.on(WebRtcCommand.OtherIsCalling, () => this.webRtcStore.incomingCall = true)
-      this.webRtcBrokerSocket.on(WebRtcCommand.AnswerMade, (answer: RTCSessionDescriptionInit) => this.answerMade(answer));
+      this.webRtcBrokerSocket.on(
+         WebRtcCommand.OtherIsCalling,
+         () => (this.webRtcStore.incomingCall = true)
+      );
+      this.webRtcBrokerSocket.on(WebRtcCommand.AnswerMade, (answer: RTCSessionDescriptionInit) =>
+         this.answerMade(answer)
+      );
       this.webRtcBrokerSocket.on(WebRtcCommand.InitiateCall, this.sendOffer.bind(this));
       this.webRtcBrokerSocket.on(WebRtcCommand.CallBegins, this.callBegins.bind(this));
    }
@@ -19,7 +26,7 @@ export default class WebRtcManager {
       this.peerConnection = new RTCPeerConnection();
       this.peerConnection.ontrack = ({ streams: [remoteStream] }) => {
          this.webRtcStore.remoteStream = remoteStream;
-      }
+      };
    }
 
    public call() {

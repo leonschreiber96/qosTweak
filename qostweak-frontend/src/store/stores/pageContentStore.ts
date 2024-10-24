@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import StoreId from '../storeIds';
-import PageContentState from '../states/pageContentState';
+import type { PageContentState } from '../states/pageContentState';
 import useExperimentStore from './experimentStore';
 
 const usePageContentStore = defineStore(StoreId.PageContent, {
@@ -22,7 +22,7 @@ const usePageContentStore = defineStore(StoreId.PageContent, {
 
          this.html = await htmlResponse.text();
          this.css = await cssResponse.text();
-      }
+      },
    },
    persist: true,
 });

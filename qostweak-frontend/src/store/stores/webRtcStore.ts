@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import StoreId from '../storeIds';
-import WebRtcState from '../states/webRtcState';
+import StoreId from '../storeIds'
+import type { WebRtcState } from '../states/webRtcState'
 
 const useWebRtcStore = defineStore(StoreId.WebRtcConnection, {
    state: (): WebRtcState => ({
@@ -20,19 +20,19 @@ const useWebRtcStore = defineStore(StoreId.WebRtcConnection, {
    }),
    actions: {
       initiateConnection() {
-         this.outgoingCall = true;
+         this.outgoingCall = true
       },
       displayIncomingCall() {
-         this.incomingCall = true;
+         this.incomingCall = true
       },
       beginCall() {
-         this.incomingCall = false;
-         this.outgoingCall = false;
-         this.callRunning = true;
-      }
+         this.incomingCall = false
+         this.outgoingCall = false
+         this.callRunning = true
+      },
    },
    // persist: true,
-});
+})
 
-export default useWebRtcStore;
-export type WebRtcStore = ReturnType<typeof useWebRtcStore>;
+export default useWebRtcStore
+export type WebRtcStore = ReturnType<typeof useWebRtcStore>

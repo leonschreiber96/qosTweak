@@ -7,6 +7,6 @@ const experimentStore = useExperimentStore();
 </script>
 
 <template>
-   <InstructionsView v-if="experimentStore.pageType === 'instructions'"/>
-   <CallView v-else-if="experimentStore.pageType === 'call'"/>
+   <InstructionsView v-if="experimentStore.pageType === 'instructions'" />
+   <CallView v-else-if="experimentStore.pageType === 'call'" />
 </template>

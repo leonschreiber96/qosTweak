@@ -12,9 +12,11 @@ class SocketService {
    connect(url: string) {
       if (this.socket !== null) return this;
 
-      this.socket = io(url, { query: { name: this.name, type: "client" } });
+      this.socket = io(url, { query: { name: this.name, type: 'client' } });
       this.socket.on('connect', () => console.log(`[${this.name}] Connected to Socket.IO server`));
-      this.socket.on('disconnect', () => console.log(`[${this.name}] Disconnected from Socket.IO server`));
+      this.socket.on('disconnect', () =>
+         console.log(`[${this.name}] Disconnected from Socket.IO server`)
+      );
 
       return this;
    }
@@ -34,7 +36,7 @@ class SocketService {
 
    emit<T>(event: string, payload?: T) {
       if (this.socket === null) return;
-      
+
       this.socket.emit(event, payload);
    }
 }
